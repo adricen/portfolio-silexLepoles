@@ -5,6 +5,7 @@ namespace MicroCMS\Controller;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use MicroCMS\Domain\Article;
+use MicroCMS\Domain\Experience;
 use MicroCMS\Domain\User;
 use MicroCMS\Form\Type\ArticleType;
 use MicroCMS\Form\Type\CommentType;
@@ -21,6 +22,7 @@ class AdminController {
         $articles = $app['dao.article']->findAll();
         $comments = $app['dao.comment']->findAll();
         $users = $app['dao.user']->findAll();
+        // $experiences = $app['dao.experiences']->findAll();
         return $app['twig']->render('admin.html.twig', array(
             'articles' => $articles,
             'comments' => $comments,
@@ -186,4 +188,60 @@ class AdminController {
         // Redirect to admin home page
         return $app->redirect($app['url_generator']->generate('admin'));
     }
+    // CUSTOM CLASS
+
+    /**
+    * Add article controller.
+    *
+    * @param Request $request Incoming request
+    * @param Application $app Silex application
+    */
+    public function addExperienceAction(Request $request, Application $app) {
+      $experience = new Experience();
+      $experienceForm = $app['form.factory']->create(ArticleType::class, $experience);
+      $articleForm->handleRequest($request);
+      if ($experienceForm->isSubmitted() && $experienceForm->isValid()) {
+        $app['dao.experience']->save($article);
+        $app['session']->getFlashBag()->add('success', 'Votre experience à été ajouté avec succé.');
+      }
+      return $app['twig']->render('article_form.html.twig', array(
+        'title' => 'Nouvele Experience',
+        'experienceForm' => $experienceForm->createView()));
+      }
+
+      /**
+      * Edit article controller.
+      *
+      * @param integer $id Article id
+      * @param Request $request Incoming request
+      * @param Application $app Silex application
+      */
+      // public function editExperienceAction($id, Request $request, Application $app) {
+      //   $article = $app['dao.article']->find($id);
+      //   $articleForm = $app['form.factory']->create(ArticleType::class, $article);
+      //   $articleForm->handleRequest($request);
+      //   if ( $articleForm->isSubmitted() && $articleForm->isValid() ) {
+      //     $app['dao.article']->save($article);
+      //     $app['session']->getFlashBag()->add('success', 'The article was successfully updated.');
+      //   }
+      //   return $app['twig']->render('article_form.html.twig', array(
+      //     'title' => 'Edit article',
+      //     'articleForm' => $articleForm->createView()));
+      //   }
+
+        /**
+        * Delete article controller.
+        *
+        * @param integer $id Article id
+        * @param Application $app Silex application
+        */
+        // public function deleteExperienceAction($id, Application $app) {
+        //   // Delete all associated comments
+        //   // $app['dao.comment']->deleteAllByArticle($id);
+        //   // Delete the article
+        //   $app['dao.experience']->delete($id);
+        //   $app['session']->getFlashBag()->add('success', 'Cet experience àété supprimé avec succé.');
+        //   // Redirect to admin home page
+        //   return $app->redirect($app['url_generator']->generate('admin'));
+        // }
 }

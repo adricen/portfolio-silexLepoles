@@ -2,17 +2,17 @@
 
 namespace MicroCMS\DAO;
 
-use MicroCMS\Domain\Article;
+use MicroCMS\Domain\Experience;
 
-class ExperiencesDAO extends DAO
+class ExperienceDAO extends DAO
 {
     /**
-     * Return a list of all articles, sorted by date (most recent first).
+     * Return a list of all Experiences, sorted by date (most recent first).
      *
-     * @return array A list of all articles.
+     * @return array A list of all experiences.
      */
     public function findAll() {
-        $sql = "select * from t_experience order by art_id desc";
+        $sql = "select * from t_experience order by xp_id desc";
         $result = $this->getDb()->fetchAll($sql);
 
         // Convert query result to an array of domain objects
@@ -22,6 +22,7 @@ class ExperiencesDAO extends DAO
           $experiences[$experiencesId] = $this->buildDomainObject($row);
         }
         return $experiences;
+        // print_r($experiences);
     }
 
     /**
@@ -42,25 +43,25 @@ class ExperiencesDAO extends DAO
     }
 
     /**
-     * Saves an article into the database.
+     * Saves an experience into the database.
      *
-     * @param \MicroCMS\Domain\Article $article The article to save
+     * @param \MicroCMS\Domain\Experience $experience The experience to save
      */
-    public function save(Article $experiences) {
-        $experiencesData = array(
-            'xp_title' => $experiences->getTitle(),
-            'xp_descriptif' => $experiences->getContent(),
+    public function save(Experience $experience) {
+        $experienceData = array(
+            'xp_title' => $experience->getTitle(),
+            'xp_descriptif' => $experience->getContent(),
             );
 
-        if ($experiences->getId()) {
+        if ($experience->getId()) {
             // The article has already been saved : update it
-            $this->getDb()->update('t_experience', $experiencesData, array('xp_id' => $experiences->getId()));
+            $this->getDb()->update('t_experience', $experienceData, array('xp_id' => $experience->getId()));
         } else {
             // The article has never been saved : insert it
-            $this->getDb()->insert('t_experience', $experiencesData);
+            $this->getDb()->insert('t_experience', $experienceData);
             // Get the id of the newly created article and set it on the entity.
             $id = $this->getDb()->lastInsertId();
-            $experiences->setId($id);
+            $experience->setId($id);
         }
     }
 
@@ -75,17 +76,17 @@ class ExperiencesDAO extends DAO
     }
 
     /**
-     * Creates an Article object based on a DB row.
+     * Creates an Experience object based on a DB row.
      *
      * @param array $row The DB row containing Article data.
      * @return \MicroCMS\Domain\Article
      */
 
     protected function buildDomainObject(array $row) {
-        $experiences = new Experience();
-        $experiences->setId($row['xp_id']);
-        $experiences->setTitle($row['xp_title']);
-        $experiences->setContent($row['xp_descriptif']);
-        return $experiences;
+        $experience = new Experience();
+        $experience->setId($row['xp_id']);
+        $experience->setTitle($row['xp_title']);
+        $experience->setContent($row['xp_descriptif']);
+        return $experience;
     }
 }

@@ -8,6 +8,10 @@ $app->get('/', "MicroCMS\Controller\HomeController::indexAction")
 $app->match('/article/{id}', "MicroCMS\Controller\HomeController::articleAction")
 ->bind('article');
 
+// Detailed info about an experience
+$app->match('/experience/{id}', "MicroCMS\Controller\HomeController::experienceAction")
+->bind('experience');
+
 // Login form
 $app->get('/login', "MicroCMS\Controller\HomeController::loginAction")
 ->bind('login');
@@ -52,14 +56,44 @@ $app->get('/admin/user/{id}/delete', "MicroCMS\Controller\AdminController::delet
 $app->get('/api/articles', "MicroCMS\Controller\ApiController::getArticlesAction")
 ->bind('api_articles');
 
+// API : get all experiences
+$app->get('/api/experience', "MicroCMS\Controller\ApiController::getExperiencesAction")
+->bind('api_experiences');
+
 // API : get an article
 $app->get('/api/article/{id}', "MicroCMS\Controller\ApiController::getArticleAction")
 ->bind('api_article');
+
+// API : get an experience
+$app->get('/api/experience/{id}', "MicroCMS\Controller\ApiController::getExperienceAction")
+->bind('api_experience');
 
 // API : create an article
 $app->post('/api/article', "MicroCMS\Controller\ApiController::addArticleAction")
 ->bind('api_article_add');
 
+// API : create an article
+$app->post('/api/experience', "MicroCMS\Controller\ApiController::addExperienceAction")
+->bind('api_experience_add');
+
 // API : remove an article
 $app->delete('/api/article/{id}', "MicroCMS\Controller\ApiController::deleteArticleAction")
 ->bind('api_article_delete');
+
+// API : remove an experience
+$app->delete('/api/experience/{id}', "MicroCMS\Controller\ApiController::deleteExperienceAction")
+->bind('api_experience_delete');
+
+// CUSTOM STUFF
+
+// Add a new experience
+$app->match('/admin/experience/add', "MicroCMS\Controller\AdminController::addExperienceAction")
+->bind('admin_experience_add');
+
+// Edit an existing experience
+$app->match('/admin/experience/{id}/edit', "MicroCMS\Controller\AdminController::editExperienceAction")
+->bind('admin_experience_edit');
+
+// Remove an experience
+$app->get('/admin/experience/{id}/delete', "MicroCMS\Controller\AdminController::deleteExperienceAction")
+->bind('admin_experience_delete');

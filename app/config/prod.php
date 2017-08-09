@@ -21,4 +21,4 @@ $app['db.options'] = array(
 // define log parameters
 $app['monolog.level'] = 'WARNING';
 
-$app['debug'] = true;
+// $app['debug'] = true;

@@ -14,7 +14,8 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
     'twig.options'    => array(
         'cache' => __DIR__ . '/../var/cache/twig',
-        'auto_reload' => true
+        'auto_reload' => true,
+        'debug' => true
         )
 ));
 $app['twig'] = $app->extend('twig', function(Twig_Environment $twig, $app ) {
@@ -66,6 +67,9 @@ $app['dao.comment'] = function ($app) {
     $commentDAO->setArticleDAO($app['dao.article']);
     $commentDAO->setUserDAO($app['dao.user']);
     return $commentDAO;
+};
+$app['dao.experience'] = function ($app) {
+    return new MicroCMS\DAO\ExperienceDAO($app['db']);
 };
 
 // Register error handler
