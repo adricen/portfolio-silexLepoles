@@ -14,11 +14,11 @@ $app['db.options'] = array(
     'host'     => "127.0.0.1",
     'port'     => '3306',
     'dbname'   => "microcms",
-    'user'     => "microcms_user",
-    'password' => "secret",
+    'user'     => "root",
+    'password' => "",
 );
 
 // define log parameters
 $app['monolog.level'] = 'WARNING';
 
-$app['debug'] = true;
+// $app['debug'] = true;
