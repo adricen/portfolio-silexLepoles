@@ -15,8 +15,11 @@ class HomeController {
      * @param Application $app Silex application
      */
     public function indexAction(Application $app) {
+
         $articles = $app['dao.article']->findAll();
-        return $app['twig']->render('index.html.twig', array('articles' => $articles));
+        $experiences = $app['dao.experience']->findAll();
+
+        return $app['twig']->render('index.html.twig', array('articles' => $articles, 'experiences' => $experiences) );
     }
 
     /**
@@ -60,26 +63,26 @@ class HomeController {
     public function experienceAction($id, Request $request, Application $app) {
         $experiences = $app['dao.experience']->find($id);
         $commentFormView = null;
-        /* if ($app['security.authorization_checker']->isGranted('IS_AUTHENTICATED_FULLY')) {
-            // A user is fully authenticated : he can add comments
-            $comment = new Comment();
-            $comment->setArticle($article);
-            $user = $app['user'];
-            $comment->setAuthor($user);
-            $commentForm = $app['form.factory']->create(CommentType::class, $comment);
-            $commentForm->handleRequest($request);
-            if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-                $app['dao.comment']->save($comment);
-                $app['session']->getFlashBag()->add('success', 'Your comment was successfully added.');
-            }
-            $commentFormView = $commentForm->createView();
-        } */
+        // if ($app['security.authorization_checker']->isGranted('IS_AUTHENTICATED_FULLY')) {
+        //     // A user is fully authenticated : he can add comments
+        //     $comment = new Comment();
+        //     $comment->setArticle($article);
+        //     $user = $app['user'];
+        //     $comment->setAuthor($user);
+        //     $commentForm = $app['form.factory']->create(CommentType::class, $comment);
+        //     $commentForm->handleRequest($request);
+        //     if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+        //         $app['dao.comment']->save($comment);
+        //         $app['session']->getFlashBag()->add('success', 'Your comment was successfully added.');
+        //     }
+        //     $commentFormView = $commentForm->createView();
+        // }
         // $comments = $app['dao.comment']->findAllByArticle($id);
 
         return $app['twig']->render('article.html.twig', array(
-            'experience' => $experience,
-            // 'comments' => $comments,
-            // 'commentForm' => $commentFormView
+            'experience' => $experience/* ,
+            'comments' => $comments,
+            'commentForm' => $commentFormView */
           ));
     }
 

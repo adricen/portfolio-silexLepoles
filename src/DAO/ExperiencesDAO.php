@@ -51,7 +51,7 @@ class ExperienceDAO extends DAO
         $experienceData = array(
             'xp_title' => $experience->getTitle(),
             'xp_descriptif' => $experience->getContent(),
-            );
+          );
 
         if ($experience->getId()) {
             // The article has already been saved : update it

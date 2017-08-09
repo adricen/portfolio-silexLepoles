@@ -149,7 +149,7 @@ class ApiController {
         $experience = new Experience();
         $experience->setTitle($request->request->get('title'));
         $experience->setContent($request->request->get('content'));
-        $app['dao.article']->save($experience);
+        $app['dao.experience']->save($experience);
         $responseData = $this->buildExperienceArray($experience);
         return $app->json($responseData, 201);  // 201 = Created
     }
