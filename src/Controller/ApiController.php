@@ -137,7 +137,7 @@ class ApiController {
      *
      * @return Experience details in JSON format
      */
-    public function addExperienceAction(Request $request, Application $app) {
+    public function addExperienceAction( Request $request, Application $app ) {
         // Check request parameters
         if (!$request->request->has('title')) {
             return $app->json('Missing required parameter: title', 400);

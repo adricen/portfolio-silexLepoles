@@ -12,7 +12,8 @@ class ExperienceDAO extends DAO
      * @return array A list of all experiences.
      */
     public function findAll() {
-        $sql = "select * from t_experience order by xp_id desc";
+        $sql = "select * from t_experience";
+        // $sql = "select * from t_experience order by xp_id desc";
         $result = $this->getDb()->fetchAll($sql);
 
         // Convert query result to an array of domain objects
