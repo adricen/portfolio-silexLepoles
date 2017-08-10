@@ -16,11 +16,13 @@ class HomeController {
      */
     public function indexAction(Application $app) {
 
-        $articles = $app['dao.article']->findAll();
-        $experiences = $app['dao.experience']->findAll();
+        $experiences = $app['dao.article']->findAll();
+        // $experiences = $app['dao.experience']->findAll();
 
-        return $app['twig']->render('index.html.twig', array('articles' => $articles, 'experiences' => $experiences) );
+        // return $app['twig']->render('index.html.twig', array('articles' => $articles, 'experiences' => $experiences) );
+        return $app['twig']->render('index.html.twig', array('experiences' => $experiences) );
     }
+
 
     /**
      * Article details controller.
@@ -56,8 +58,8 @@ class HomeController {
     /**
      * Experience details controller.
      *
-     * @param integer $id Article id
-     * @param Request $request Incoming request
+     * @param integer $id Experience id
+     * @param Request $request Incoming requests
      * @param Application $app Silex application
      */
     public function experienceAction($id, Request $request, Application $app) {
