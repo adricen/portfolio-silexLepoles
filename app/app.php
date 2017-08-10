@@ -15,9 +15,10 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.options'    => array(
         'cache' => __DIR__ . '/../var/cache/twig',
         'auto_reload' => true
+
         )
 ));
-$app['twig'] = $app->extend('twig', function(Twig_Environment $twig, $app ) {
+$app['twig'] = $app->extend('twig', function(Twig_Environment $twig, $app) {
     $twig->addExtension(new Twig_Extensions_Extension_Text());
     return $twig;
 });
