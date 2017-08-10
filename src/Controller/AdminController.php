@@ -26,9 +26,7 @@ class AdminController {
         return $app['twig']->render('admin.html.twig', array(
             'articles' => $articles,
             'comments' => $comments,
-            'users' => $users
-          )
-        );
+            'users' => $users));
     }
 
     /**
@@ -138,7 +136,7 @@ class AdminController {
             $encoder = $app['security.encoder.bcrypt'];
             // compute the encoded password
             $password = $encoder->encodePassword($plainPassword, $user->getSalt());
-            $user->setPassword($password);
+            $user->setPassword($password); 
             $app['dao.user']->save($user);
             $app['session']->getFlashBag()->add('success', 'The user was successfully created.');
         }
@@ -164,7 +162,7 @@ class AdminController {
             $encoder = $app['security.encoder_factory']->getEncoder($user);
             // compute the encoded password
             $password = $encoder->encodePassword($plainPassword, $user->getSalt());
-            $user->setPassword($password);
+            $user->setPassword($password); 
             $app['dao.user']->save($user);
             $app['session']->getFlashBag()->add('success', 'The user was successfully updated.');
         }
