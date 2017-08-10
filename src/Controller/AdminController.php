@@ -136,7 +136,7 @@ class AdminController {
             $encoder = $app['security.encoder.bcrypt'];
             // compute the encoded password
             $password = $encoder->encodePassword($plainPassword, $user->getSalt());
-            $user->setPassword($password); 
+            $user->setPassword($password);
             $app['dao.user']->save($user);
             $app['session']->getFlashBag()->add('success', 'The user was successfully created.');
         }
@@ -162,7 +162,7 @@ class AdminController {
             $encoder = $app['security.encoder_factory']->getEncoder($user);
             // compute the encoded password
             $password = $encoder->encodePassword($plainPassword, $user->getSalt());
-            $user->setPassword($password); 
+            $user->setPassword($password);
             $app['dao.user']->save($user);
             $app['session']->getFlashBag()->add('success', 'The user was successfully updated.');
         }
@@ -199,7 +199,7 @@ class AdminController {
       $experienceForm = $app['form.factory']->create(ArticleType::class, $experience);
       $articleForm->handleRequest($request);
       if ($experienceForm->isSubmitted() && $experienceForm->isValid()) {
-        $app['dao.experience']->save($article);
+        $app['dao.experience']->save($experience);
         $app['session']->getFlashBag()->add('success', 'Votre experience à été ajouté avec succé.');
       }
       return $app['twig']->render('article_form.html.twig', array(

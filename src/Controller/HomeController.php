@@ -16,11 +16,13 @@ class HomeController {
      */
     public function indexAction(Application $app) {
 
-        $experiences = $app['dao.article']->findAll();
+        $articles = $app['dao.article']->findAll();
         // $experiences = $app['dao.experience']->findAll();
 
         // return $app['twig']->render('index.html.twig', array('articles' => $articles, 'experiences' => $experiences) );
-        return $app['twig']->render('index.html.twig', array('experiences' => $experiences) );
+        return $app['twig']->render('index.html.twig', array(
+          'articles' => $articles,
+        ) );
     }
 
 
