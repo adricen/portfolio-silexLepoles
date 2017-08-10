@@ -3,7 +3,6 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<<<<<<< HEAD
   <h1>Hello</h1>
   {% for article in articles %}
     <article>
@@ -19,12 +18,4 @@
     </article>
   {% endfor %}
 
-=======
-{% for article in articles %}
-<article>
-    <h2><a class="articleTitle" href="{{ path('article', { 'id': article.id }) }}">{{ article.title }}</a></h2>
-    <p>{{ article.content }}</p>
-</article>
-{% endfor %}
->>>>>>> master
 {% endblock %}

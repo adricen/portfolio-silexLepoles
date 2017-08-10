@@ -19,11 +19,4 @@ $app['db.options'] = array(
 );
 
 // define log parameters
-<<<<<<< HEAD
-// $app['monolog.level'] = 'WARNING';
-$app['monolog.level'] = 'INFO';
-
-// $app['debug'] = true;
-=======
 $app['monolog.level'] = 'WARNING';
->>>>>>> master

@@ -16,21 +16,11 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
     'twig.options'    => array(
         'cache' => __DIR__ . '/../var/cache/twig',
-<<<<<<< HEAD
-        'auto_reload' => true,
-        'debug' => true
-        )
-));
-$app['twig'] = $app->extend('twig', function(Twig_Environment $twig, $app ) {
-    $twig->addExtension(new Twig_Extensions_Extension_Text() );
-=======
         'auto_reload' => true
-
         )
 ));
 $app['twig'] = $app->extend('twig', function(Twig_Environment $twig, $app) {
     $twig->addExtension(new Twig_Extensions_Extension_Text());
->>>>>>> master
     return $twig;
 });
 $app->register(new Silex\Provider\AssetServiceProvider(), array(
