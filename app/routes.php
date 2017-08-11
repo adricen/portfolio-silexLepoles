@@ -4,6 +4,14 @@
 $app->get('/', "MicroCMS\Controller\HomeController::indexAction")
 ->bind('home');
 
+//Experience
+$app->get('/experience', "MicroCMS\Controller\ExperienceController::experienceAction")
+->bind('experience');
+
+$app->get('/experiencesingle/{id}', "MicroCMS\Controller\ExperienceController::experiencesingleAction")
+->bind('experiencesingle');
+
+
 // Detailed info about an article
 $app->match('/article/{id}', "MicroCMS\Controller\HomeController::articleAction")
 ->bind('article');

@@ -5,24 +5,8 @@ namespace MicroCMS\DAO;
 use Doctrine\DBAL\Connection;
 use MicroCMS\Domain\Experience;
 
-class ExperienceDAO
+class ExperienceDAO extends DAO
 {
-    /**
-     * Database connection
-     *
-     * @var \Doctrine\DBAL\Connection
-     */
-    private $db;
-
-    /**
-     * Constructor
-     *
-     * @param \Doctrine\DBAL\Connection The database connection object
-     */
-    public function __construct(Connection $db) {
-        $this->db = $db;
-    }
-
     /**
      * Return a list of all articles, sorted by date (most recent first).
      *
@@ -33,7 +17,7 @@ class ExperienceDAO
         $result = $this->db->fetchAll($sql);
 
         // Convert query result to an array of domain objects
-        $articles = array();
+        $experiences = array();
         foreach ($result as $row) {
             $experienceId = $row['art_id'];
             $experiences[$experienceId] = $this->buildArticle($row);
@@ -47,7 +31,7 @@ class ExperienceDAO
      * @param array $row The DB row containing Article data.
      * @return \MicroCMS\Domain\Article
      */
-    private function buildArticle(array $row) {
+    private function buildExperience(array $row) {
         $experience = new Experience();
         $experience->setId($row['xp_id']);
         $experience->setTitle($row['xp_poste']);
