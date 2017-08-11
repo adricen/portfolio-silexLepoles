@@ -72,6 +72,15 @@ $app['dao.comment'] = function ($app) {
 $app['dao.experience'] = function ($app) {
     return new MicroCMS\DAO\ExperienceDAO( $app['db'] );
 };
+$app['dao.loisir'] = function ($app) {
+    return new MicroCMS\DAO\LoisirDAO( $app['db'] );
+};
+$app['dao.perso'] = function ($app) {
+    return new MicroCMS\DAO\PersoDAO( $app['db'] );
+};
+$app['dao.portfolio'] = function ($app) {
+    return new MicroCMS\DAO\PersoDAO( $app['db'] );
+};
 
 // Register error handler
 // $app->error(function (\Exception $e, Request $request, $code) use ($app) {

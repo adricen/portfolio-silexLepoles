@@ -1,0 +1,14 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block content %}
+  <h1>Perso</h1>
+  {% for portfolio in portfolios %}
+    <article>
+        <h2><a class="articleTitle" href="{{ path('portfolio', { 'id': portfolio.id }) }}">{{ portfolio.title }}</a></h2>
+        <p>{{ portfolio.content }}</p>
+    </article>
+  {% endfor %}
+
+{% endblock %}

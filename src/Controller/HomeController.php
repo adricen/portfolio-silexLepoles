@@ -18,8 +18,16 @@ class HomeController {
 
         $articles = $app['dao.article']->findAll();
         $experiences = $app['dao.experience']->findAll();
-
-        return $app['twig']->render('index.html.twig', array('articles' => $articles, 'experiences' => $experiences) );
+        $loisirs = $app['dao.loisir']->findAll();
+        $persos = $app['dao.perso']->findAll();
+        $portfolios = $app['dao.portfolio']->findAll();
+        return $app['twig']->render('index.html.twig', array(
+          'articles' => $articles,
+          'experiences' => $experiences,
+          'loisirs' => $loisirs,
+          'persos' => $persos,
+          'portfolios' => $portfolios
+        ) );
         // return $app['twig']->render('index.html.twig', array( 'articles' => $articles ) );
     }
 
@@ -63,7 +71,7 @@ class HomeController {
      * @param Application $app Silex application
      */
     public function experienceAction($id, Request $request, Application $app) {
-        $experiences = $app['dao.experience']->find($id);
+        $experience = $app['dao.experience']->find($id);
         $commentFormView = null;
         // if ($app['security.authorization_checker']->isGranted('IS_AUTHENTICATED_FULLY')) {
         //     // A user is fully authenticated : he can add comments
@@ -85,6 +93,14 @@ class HomeController {
             'experience' => $experience/* ,
             'comments' => $comments,
             'commentForm' => $commentFormView */
+          ));
+    }
+    public function loisirAction($id, Request $request, Application $app) {
+        $loisir = $app['dao.experience']->find($id);
+        $commentFormView = null;
+
+        return $app['twig']->render('article.html.twig', array(
+            'loisir' => $loisir
           ));
     }
 

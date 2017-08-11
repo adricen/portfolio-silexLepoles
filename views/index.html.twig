@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-  <h1>Hello</h1>
+  <h1>Articles</h1>
   {% for article in articles %}
     <article>
         <h2><a class="articleTitle" href="{{ path('article', { 'id': article.id }) }}">{{ article.title }}</a></h2>
@@ -11,11 +11,32 @@
 
     </article>
   {% endfor %}
+  <h1>Experiences</h1>
   {% for experience in experiences %}
     <article>
         <h2><a class="articleTitle" href="{{ path('experience', { 'id': experience.id }) }}">{{ experience.title }}</a></h2>
         <p>{{ experience.content }}</p>
     </article>
   {% endfor %}
-
+  <h1>Loisirs</h1>
+  {% for loisir in loisirs %}
+    <article>
+        <h2><a class="articleTitle" href="{{ path('loisir', { 'id': loisir.id }) }}">{{ loisir.title }}</a></h2>
+        <p>{{ loisir.content }}</p>
+    </article>
+  {% endfor %}
+  <h1>Perso</h1>
+  {% for perso in persos %}
+    <article>
+        <h2><a class="articleTitle" href="{{ path('perso', { 'id': perso.id }) }}">{{ perso.title }}</a></h2>
+        <p>{{ perso.content }}</p>
+    </article>
+  {% endfor %}
+  <h1>Portfolio</h1>
+  {% for portfolio in portfolios %}
+    <article>
+        <h2><a class="articleTitle" href="{{ path('portfolio', { 'id': portfolio.id }) }}">{{ portfolio.title }}</a></h2>
+        <p>{{ portfolio.content }}</p>
+    </article>
+  {% endfor %}
 {% endblock %}

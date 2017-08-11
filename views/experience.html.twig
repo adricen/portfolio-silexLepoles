@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-  <h1>Hello</h1>
+  <h1>Experiences</h1>
   {% for experience in experiences %}
     <article>
         <h2><a class="articleTitle" href="{{ path('experience', { 'id': experience.id }) }}">{{ experience.title }}</a></h2>

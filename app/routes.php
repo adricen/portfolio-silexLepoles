@@ -4,12 +4,33 @@
 $app->get('/', "MicroCMS\Controller\HomeController::indexAction")
 ->bind('home');
 
-//Experience
+// Experience
 $app->get('/experience', "MicroCMS\Controller\ExperienceController::experienceAction")
 ->bind('experience');
 
-$app->get('/experiencesingle/{id}', "MicroCMS\Controller\ExperienceController::experiencesingleAction")
-->bind('experiencesingle');
+$app->get('/experience/{id}', "MicroCMS\Controller\ExperienceController::experiencesingleAction")
+->bind('experience_single');
+
+// Loisirs
+$app->get('/loisir', "MicroCMS\Controller\LoisirController::loisirAction")
+->bind('loisir');
+
+$app->get('/loisir/{id}', "MicroCMS\Controller\LoisirController::loisirsingleAction")
+->bind('loisir_single');
+
+// Perso
+$app->get('/perso', "MicroCMS\Controller\PersoController::persoAction")
+->bind('perso');
+
+$app->get('/perso/{id}', "MicroCMS\Controller\PersoController::persosingleAction")
+->bind('perso_single');
+
+// Portfolio
+$app->get('/portfolio', "MicroCMS\Controller\PortfolioController::portfolioAction")
+->bind('portfolio');
+
+$app->get('/portfolio/{id}', "MicroCMS\Controller\PortfolioController::portfoliosingleAction")
+->bind('portfolio_single');
 
 
 // Detailed info about an article
