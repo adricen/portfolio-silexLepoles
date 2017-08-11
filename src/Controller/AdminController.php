@@ -22,11 +22,14 @@ class AdminController {
         $articles = $app['dao.article']->findAll();
         $comments = $app['dao.comment']->findAll();
         $users = $app['dao.user']->findAll();
+        $experiences = $app['dao.experience']->findAll();
         // $experiences = $app['dao.experiences']->findAll();
         return $app['twig']->render('admin.html.twig', array(
             'articles' => $articles,
             'comments' => $comments,
-            'users' => $users));
+            'users' => $users,
+            'experiences' => $experiences
+          ));
     }
 
     /**
