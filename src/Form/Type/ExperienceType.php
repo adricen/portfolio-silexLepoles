@@ -9,15 +9,15 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ExperienceType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('title', TextType::class)
-            ->add('content', TextareaType::class);
-    }
+  public function buildForm(FormBuilderInterface $builder, array $options)
+  {
+      $builder
+          ->add('title', TextType::class)
+          ->add('content', TextareaType::class);
+  }
 
-    public function getName()
-    {
-        return 'experience';
-    }
+  public function getName()
+  {
+      return 'experience';
+  }
 }

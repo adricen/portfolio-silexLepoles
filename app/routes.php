@@ -16,10 +16,6 @@ $app->get('/experiencesingle/{id}', "MicroCMS\Controller\ExperienceController::e
 $app->match('/article/{id}', "MicroCMS\Controller\HomeController::articleAction")
 ->bind('article');
 
-// Detailed info about an experience
-$app->match('/experience/{id}', "MicroCMS\Controller\HomeController::experienceAction")
-->bind('experience');
-
 // Login form
 $app->get('/login', "MicroCMS\Controller\HomeController::loginAction")
 ->bind('login');

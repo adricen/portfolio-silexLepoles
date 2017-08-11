@@ -14,13 +14,13 @@ class ExperienceDAO extends DAO
      */
     public function findAll() {
         $sql = "select * from t_experience order by xp_id desc";
-        $result = $this->db->fetchAll($sql);
+        $result = $this->getDb()->fetchAll($sql);
 
         // Convert query result to an array of domain objects
         $experiences = array();
         foreach ($result as $row) {
-            $experienceId = $row['art_id'];
-            $experiences[$experienceId] = $this->buildArticle($row);
+            $experienceId = $row['xp_id'];
+            $experiences[$experienceId] = $this->buildDomainObject($row);
         }
         return $experiences;
     }
@@ -31,7 +31,7 @@ class ExperienceDAO extends DAO
      * @param array $row The DB row containing Article data.
      * @return \MicroCMS\Domain\Article
      */
-    private function buildExperience(array $row) {
+    protected function buildDomainObject(array $row) {
         $experience = new Experience();
         $experience->setId($row['xp_id']);
         $experience->setTitle($row['xp_poste']);

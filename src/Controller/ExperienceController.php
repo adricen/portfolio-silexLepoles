@@ -9,7 +9,7 @@ class ExperienceController {
 
     public function experienceAction(Application $app) {
         $experiences = $app['dao.experience']->findAll();
-        var_dump($experiences);
+        // var_dump($experiences);
         return $app['twig']->render('experience.html.twig', array('experiences' => $experiences));
     }
 
