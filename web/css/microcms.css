@@ -1,23 +1,51 @@
-body { 
-    padding-top: 50px; 
-}
 
+/* Balises */
+body {
+    padding-top: 50px;
+}
+img {
+  width:100%;
+}
+/*------*/
+
+/* Classes */
+.adminTable {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.tuile{
+  padding:10px;
+  margin:10px;
+  background-color:rgba(25,25,25,0.1);
+  float:left;
+  width:48%;
+  }
+  .tuile:nth-child(even){
+    float:right;
+  }
+.articleTitle:hover, .articleTitle:focus {
+  text-decoration: none;
+}
 .footer {
     border-top: 1px solid #ccc;
     padding-top: 10px;
     text-align: center;
 }
+/*------*/
 
-.articleTitle:hover, .articleTitle:focus {
-    text-decoration: none;
-}
+/* ID */
+#admin{
 
-.adminTable {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
+  }
+  #admin #experiences img{
+    max-width:250px;
+  }
+  #admin .table-responsive{
+    max-height: 70vh;
+    overflow-y: scroll;
+  }
 #errorPanel {
     padding-top: 30px;
     padding-bottom: 10px;
 }
+/*------*/

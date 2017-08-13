@@ -25,6 +25,37 @@ class Perso
      */
     private $content;
 
+    // Adresse
+    private $adresse;
+
+    // Prenom
+    private $prenom;
+
+    // Telephone
+    private $tel;
+
+    public function setTel( $tel ){
+      $this->tel = $tel;
+      return $this;
+    }
+    public function getTel(){
+      return $this->tel;
+    }
+    public function getAdresse(){
+      return $this->adresse;
+    }
+    public function setAdresse( $adresse ){
+      $this->adresse = $adresse;
+      return $this;
+    }
+    public function getPrenom(){
+      return $this->prenom;
+    }
+    public function setPrenom( $prenom ){
+      $this->prenom = $prenom;
+      return $this;
+    }
+
     public function getId() {
         return $this->id;
     }

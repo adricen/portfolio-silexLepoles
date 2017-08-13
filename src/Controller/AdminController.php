@@ -7,9 +7,14 @@ use Symfony\Component\HttpFoundation\Request;
 use MicroCMS\Domain\Article;
 use MicroCMS\Domain\Experience;
 use MicroCMS\Domain\User;
+use MicroCMS\Domain\Perso;
+use MicroCMS\Domain\Portfolio;
+use MicroCMS\Domain\Loisir;
 use MicroCMS\Form\Type\ArticleType;
+use MicroCMS\Form\Type\ExperienceType;
 use MicroCMS\Form\Type\CommentType;
 use MicroCMS\Form\Type\UserType;
+use MicroCMS\Form\Type\ExperienceController;
 
 class AdminController {
 
@@ -23,12 +28,18 @@ class AdminController {
         $comments = $app['dao.comment']->findAll();
         $users = $app['dao.user']->findAll();
         $experiences = $app['dao.experience']->findAll();
+        $loisirs = $app['dao.loisir']->findAll();
+        $persos = $app['dao.perso']->findAll();
+        $portfolios = $app['dao.portfolio']->findAll();
         // $experiences = $app['dao.experiences']->findAll();
         return $app['twig']->render('admin.html.twig', array(
             'articles' => $articles,
             'comments' => $comments,
             'users' => $users,
-            'experiences' => $experiences
+            'experiences' => $experiences,
+            'loisirs' => $loisirs,
+            'persos' => $persos,
+            'portfolios' => $portfolios
           ));
     }
 
@@ -68,7 +79,7 @@ class AdminController {
         }
         return $app['twig']->render('article_form.html.twig', array(
             'title' => 'Edit article',
-            'articleForm' => $articleForm->createView()));
+            'articleForm' => $articleForm->createView() ));
     }
 
     /**
@@ -198,17 +209,17 @@ class AdminController {
     * @param Application $app Silex application
     */
     public function addExperienceAction(Request $request, Application $app) {
-      $experience = new Experience();
-      $experienceForm = $app['form.factory']->create(ArticleType::class, $experience);
-      $articleForm->handleRequest($request);
-      if ($experienceForm->isSubmitted() && $experienceForm->isValid()) {
-        $app['dao.experience']->save($experience);
-        $app['session']->getFlashBag()->add('success', 'Votre experience à été ajouté avec succé.');
-      }
-      return $app['twig']->render('article_form.html.twig', array(
-        'title' => 'Nouvele Experience',
-        'experienceForm' => $experienceForm->createView()));
-      }
+        $experience = new Experience();
+        $experienceForm = $app['form.factory']->create(ExperienceType::class, $experience);
+        $experienceForm->handleRequest($request);
+        if ($experienceForm->isSubmitted() && $experienceForm->isValid()) {
+            $app['dao.experience']->save($experience);
+            $app['session']->getFlashBag()->add('success', 'Vous avez créé une nouvelle experience.');
+        }
+        return $app['twig']->render('experience_form.html.twig', array(
+            'title' => 'Nouvelle Experience',
+            'experienceForm' => $experienceForm->createView()));
+    }
 
       /**
       * Edit article controller.
@@ -217,18 +228,18 @@ class AdminController {
       * @param Request $request Incoming request
       * @param Application $app Silex application
       */
-      // public function editExperienceAction($id, Request $request, Application $app) {
-      //   $article = $app['dao.article']->find($id);
-      //   $articleForm = $app['form.factory']->create(ArticleType::class, $article);
-      //   $articleForm->handleRequest($request);
-      //   if ( $articleForm->isSubmitted() && $articleForm->isValid() ) {
-      //     $app['dao.article']->save($article);
-      //     $app['session']->getFlashBag()->add('success', 'The article was successfully updated.');
-      //   }
-      //   return $app['twig']->render('article_form.html.twig', array(
-      //     'title' => 'Edit article',
-      //     'articleForm' => $articleForm->createView()));
-      //   }
+      public function editExperienceAction($id, Request $request, Application $app) {
+        $experience = $app['dao.experience']->find($id);
+        $experienceForm = $app['form.factory']->create(ExperienceType::class, $experience);
+        $experienceForm->handleRequest($request);
+        if ( $experienceForm->isSubmitted() && $experienceForm->isValid() ) {
+          $app['dao.experience']->save($experience);
+          $app['session']->getFlashBag()->add('success', 'Votre experience à été enregistré avec succé.');
+        }
+        return $app['twig']->render('experience_form.html.twig', array(
+          'title' => 'Editer votre experience',
+          'experienceForm' => $experienceForm->createView()));
+        }
 
         /**
         * Delete article controller.
@@ -236,13 +247,11 @@ class AdminController {
         * @param integer $id Article id
         * @param Application $app Silex application
         */
-        // public function deleteExperienceAction($id, Application $app) {
-        //   // Delete all associated comments
-        //   // $app['dao.comment']->deleteAllByArticle($id);
-        //   // Delete the article
-        //   $app['dao.experience']->delete($id);
-        //   $app['session']->getFlashBag()->add('success', 'Cet experience àété supprimé avec succé.');
-        //   // Redirect to admin home page
-        //   return $app->redirect($app['url_generator']->generate('admin'));
-        // }
+        public function deleteExperienceAction($id, Application $app) {
+            // Delete the article
+            $app['dao.experience']->delete($id);
+            $app['session']->getFlashBag()->add('success', 'Cette experience à été supprimé avec succé !');
+            // Redirect to admin home page
+            return $app->redirect($app['url_generator']->generate('admin'));
+        }
 }

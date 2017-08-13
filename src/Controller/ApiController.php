@@ -178,8 +178,11 @@ class ApiController {
     private function buildExperienceArray(Experience $experience) {
         $data  = array(
             'id' => $experience->getId(),
-            'title' => $experience->getTitle(),
-            'content' => $experience->getContent()
+            'contrat' => $experience->getContrat(),
+            'debut' => $experience->getDebut(),
+            'fin' => $experience->getFin(),
+            'poste' => $experience->getPoste(),
+            'img' => $experience->getImg()
             );
         return $data;
     }

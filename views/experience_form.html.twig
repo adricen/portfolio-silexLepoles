@@ -14,13 +14,49 @@
   <div class="well">
   {{ form_start( experienceForm, { 'attr': {'class': 'form-horizontal'} }) }}
       <div class="form-group">
-          {{ form_label(experienceForm.title, null, { 'label_attr':  {
+          {{ form_label(experienceForm.contrat, null, { 'label_attr':  {
               'class': 'col-sm-4 control-label'
           }}) }}
           <div class="col-sm-6">
-              {{ form_errors(experienceForm.title) }}
-              {{ form_widget(experienceForm.title, { 'attr':  {
+              {{ form_errors(experienceForm.contrat) }}
+              {{ form_widget(experienceForm.contrat, { 'attr':  {
                   'class': 'form-control'
+              }}) }}
+          </div>
+      </div>
+      <div class="form-group">
+          {{ form_label(experienceForm.debut, null, { 'label_attr':  {
+              'class': 'col-sm-4 control-label'
+          }}) }}
+          <div class="col-sm-6">
+              {{ form_errors(experienceForm.debut) }}
+              {{ form_widget(experienceForm.debut, { 'attr':  {
+                  'class': 'form-control',
+                  'rows': '8'
+              }}) }}
+          </div>
+      </div>
+      <div class="form-group">
+          {{ form_label(experienceForm.fin, null, { 'label_attr':  {
+              'class': 'col-sm-4 control-label'
+          }}) }}
+          <div class="col-sm-6">
+              {{ form_errors(experienceForm.fin) }}
+              {{ form_widget(experienceForm.fin, { 'attr':  {
+                  'class': 'form-control',
+                  'rows': '8'
+              }}) }}
+          </div>
+      </div>
+      <div class="form-group">
+          {{ form_label(experienceForm.poste, null, { 'label_attr':  {
+              'class': 'col-sm-4 control-label'
+          }}) }}
+          <div class="col-sm-6">
+              {{ form_errors(experienceForm.poste) }}
+              {{ form_widget(experienceForm.poste, { 'attr':  {
+                  'class': 'form-control',
+                  'rows': '8'
               }}) }}
           </div>
       </div>
@@ -31,6 +67,18 @@
           <div class="col-sm-6">
               {{ form_errors(experienceForm.content) }}
               {{ form_widget(experienceForm.content, { 'attr':  {
+                  'class': 'form-control',
+                  'rows': '8'
+              }}) }}
+          </div>
+      </div>
+      <div class="form-group">
+          {{ form_label(experienceForm.img, null, { 'label_attr':  {
+              'class': 'col-sm-4 control-label'
+          }}) }}
+          <div class="col-sm-6">
+              {{ form_errors(experienceForm.img) }}
+              {{ form_widget(experienceForm.img, { 'attr':  {
                   'class': 'form-control',
                   'rows': '8'
               }}) }}

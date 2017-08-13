@@ -25,6 +25,30 @@ class Experience
      */
     private $content;
 
+    // Contrat
+    private $contrat;
+
+    // debut
+    private $debut;
+
+    // private
+    private $fin;
+
+    // Poste
+    private $poste;
+
+    // Image
+    private $img;
+
+    public function setContrat( $contrat ){
+      $this->contrat = $contrat;
+      return $this;
+    }
+
+    public function getContrat(){
+      return $this->contrat;
+    }
+
     public function getId() {
         return $this->id;
     }
@@ -50,5 +74,34 @@ class Experience
     public function setContent($content) {
         $this->content = $content;
         return $this;
+    }
+
+    public function setDebut( $debut ){
+      $this->debut = $debut;
+      return $this;
+    }
+    public function getDebut(){
+      return $this->debut;
+    }
+    public function setFin( $fin ){
+      $this->fin = $fin;
+      return $this;
+    }
+    public function getFin(){
+      return $this->fin;
+    }
+    public function setPoste( $poste ){
+      $this->poste = $poste;
+      return $this;
+    }
+    public function getPoste(){
+      return $this->poste;
+    }
+    public function setImg( $img ){
+      $this->img = $img;
+      return $this;
+    }
+    public function getImg(){
+      return $this->img;
     }
 }

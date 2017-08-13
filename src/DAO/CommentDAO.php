@@ -4,7 +4,7 @@ namespace MicroCMS\DAO;
 
 use MicroCMS\Domain\Comment;
 
-class CommentDAO extends DAO 
+class CommentDAO extends DAO
 {
     /**
      * @var \MicroCMS\DAO\ArticleDAO
@@ -119,6 +119,14 @@ class CommentDAO extends DAO
     public function deleteAllByArticle($articleId) {
         $this->getDb()->delete('t_comment', array('art_id' => $articleId));
     }
+    /**
+     * Removes all comments for an article
+     *
+     * @param integer $articleId The id of the article
+     */
+    public function deleteAllByExperience($experienceId) {
+        $this->getDb()->delete('t_experience', array('xp_id' => $experienceId));
+    }
 
     /**
      * Removes all comments for a user
@@ -162,7 +170,7 @@ class CommentDAO extends DAO
             $user = $this->userDAO->find($userId);
             $comment->setAuthor($user);
         }
-        
+
         return $comment;
     }
 }

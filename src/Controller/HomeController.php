@@ -11,7 +11,7 @@ class HomeController {
 
     /**
      * Home page controller.
-     *
+     * injection des elements dans la page
      * @param Application $app Silex application
      */
     public function indexAction(Application $app) {
@@ -21,6 +21,7 @@ class HomeController {
         $loisirs = $app['dao.loisir']->findAll();
         $persos = $app['dao.perso']->findAll();
         $portfolios = $app['dao.portfolio']->findAll();
+        // var_dump($portfolios);
         return $app['twig']->render('index.html.twig', array(
           'articles' => $articles,
           'experiences' => $experiences,
@@ -89,7 +90,7 @@ class HomeController {
         // }
         // $comments = $app['dao.comment']->findAllByArticle($id);
 
-        return $app['twig']->render('article.html.twig', array(
+        return $app['twig']->render('experience.html.twig', array(
             'experience' => $experience/* ,
             'comments' => $comments,
             'commentForm' => $commentFormView */

@@ -3,40 +3,47 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-  <h1>Articles</h1>
-  {% for article in articles %}
-    <article>
-        <h2><a class="articleTitle" href="{{ path('article', { 'id': article.id }) }}">{{ article.title }}</a></h2>
-        <p>{{ article.content }}</p>
-
-    </article>
-  {% endfor %}
-  <h1>Experiences</h1>
+<div id="front">
+  <h1 class="row col-md-12">Articles</h1>
+    {% for article in articles %}
+      <article class="row col-md-6 tuile">
+          <h2><a class="articleTitle" href="{{ path('article', { 'id': article.id }) }}">{{ article.title }}</a></h2>
+          <p>{{ article.content }}</p>
+      </article>
+    {% endfor %}
+  <h1 class="row col-md-12">Experiences</h1>
   {% for experience in experiences %}
-    <article>
-        <h2><a class="articleTitle" href="{{ path('experience', { 'id': experience.id }) }}">{{ experience.title }}</a></h2>
-        <p>{{ experience.content }}</p>
+    <article class="row col-md-6 tuile">
+        <h2><a class="articleTitle" href="{{ path('experience', { 'id': experience.id }) }}">{{ experience.poste }}</a></h2>
+        <p><em>{{ experience.debut }}</em> / <em>{{ experience.fin }}</em></p>
+        <div class="col-md-12">
+          <img src="{{ experience.img }}" title="{{ experience.title }}" class="col-md-8 col-md-offset-2 img-thumbnail" alt="{{ experience.title }}">
+        </div>
+        <h3>{{ experience.content }}</h3>
     </article>
   {% endfor %}
-  <h1>Loisirs</h1>
+  <h1 class="row col-md-12">Loisirs</h1>
   {% for loisir in loisirs %}
-    <article>
+    <article class="row col-md-6 tuile">
         <h2><a class="articleTitle" href="{{ path('loisir', { 'id': loisir.id }) }}">{{ loisir.title }}</a></h2>
         <p>{{ loisir.content }}</p>
     </article>
   {% endfor %}
-  <h1>Perso</h1>
+  <h1 class="row col-md-12">Perso</h1>
   {% for perso in persos %}
-    <article>
-        <h2><a class="articleTitle" href="{{ path('perso', { 'id': perso.id }) }}">{{ perso.title }}</a></h2>
-        <p>{{ perso.content }}</p>
+    <article class="row col-md-6 tuile">
+        <h2><a class="articleTitle" href="{{ path('perso', { 'id': perso.id }) }}">{{ perso.title }} {{ perso.prenom }}</a></h2>
+        <p>{{ perso.adresse }}</p>
+        <p>{{ perso.tel }}</p>
     </article>
   {% endfor %}
-  <h1>Portfolio</h1>
+  <h1 class="row col-md-12">Portfolio</h1>
   {% for portfolio in portfolios %}
-    <article>
+    <article class="row col-md-6 tuile">
         <h2><a class="articleTitle" href="{{ path('portfolio', { 'id': portfolio.id }) }}">{{ portfolio.title }}</a></h2>
         <p>{{ portfolio.content }}</p>
     </article>
   {% endfor %}
+</div>
+
 {% endblock %}

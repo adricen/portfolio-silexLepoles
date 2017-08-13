@@ -13,7 +13,7 @@ class PersoDAO extends DAO
      * @return array A list of all articles.
      */
     public function findAll() {
-        $sql = "select * from t_perso order by perso_id desc";
+        $sql = "select * from t_perso order by perso_id asc";
         $result = $this->getDb()->fetchAll($sql);
 
         // Convert query result to an array of domain objects
@@ -35,7 +35,9 @@ class PersoDAO extends DAO
         $perso = new Perso();
         $perso->setId($row['perso_id']);
         $perso->setTitle($row['perso_nom']);
-        $perso->setContent($row['perso_adresse']);
+        $perso->setPrenom($row['perso_prenom']);
+        $perso->setTel($row['perso_tel']);
+        $perso->setAdresse($row['perso_adresse']);
         return $perso;
     }
 }
