@@ -76,6 +76,12 @@ img {
       text-transform: uppercase;
     }
   }
+  @media (min-width: 768px){
+    header.masthead .intro-text .name {
+      font-size: 3.75em;
+    }
+
+  }
 /* ID */
 #admin{
 
