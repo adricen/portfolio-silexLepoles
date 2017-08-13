@@ -28,6 +28,18 @@ class Perso
     // Adresse
     private $adresse;
 
+    // Adresse
+    private $poste;
+
+    // Facebook
+    private $facebook;
+
+    // Facebook
+    private $codepen;
+
+    // Github
+    private $github;
+
     // Prenom
     private $prenom;
 
@@ -43,6 +55,34 @@ class Perso
     }
     public function getTel(){
       return $this->tel;
+    }
+    public function setFacebook( $facebook ){
+      $this->facebook = $facebook;
+      return $this;
+    }
+    public function getFacebook(){
+      return $this->facebook;
+    }
+    public function setGithub( $github ){
+      $this->github = $github;
+      return $this;
+    }
+    public function getGithub(){
+      return $this->github;
+    }
+    public function setCodepen( $codepen ){
+      $this->codepen = $codepen;
+      return $this;
+    }
+    public function getCodepen(){
+      return $this->codepen;
+    }
+    public function setPoste( $poste ){
+      $this->poste = $poste;
+      return $this;
+    }
+    public function getPoste(){
+      return $this->poste;
     }
     public function setImg( $img ){
       $this->img = $img;

@@ -36,6 +36,10 @@ class PersoDAO extends DAO
         $perso->setId($row['perso_id']);
         $perso->setTitle($row['perso_nom']);
         $perso->setPrenom($row['perso_prenom']);
+        $perso->setPoste($row['perso_poste']);
+        $perso->setFacebook($row['perso_facebook']);
+        $perso->setGithub($row['perso_github']);
+        $perso->setCodepen($row['perso_codepen']);
         $perso->setImg($row['perso_img']);
         $perso->setTel($row['perso_tel']);
         $perso->setAdresse($row['perso_adresse']);

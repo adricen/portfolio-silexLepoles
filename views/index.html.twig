@@ -1,4 +1,4 @@
-{% extends "layout.html.twig" %}
+{% extends "layout_front.html.twig" %}
 
 {% block title %}Home{% endblock %}
 
@@ -8,29 +8,30 @@
   <!-- Navigation -->
 
       <!-- Header -->
-      <header class="masthead">
+      <header class="masthead gradient">
         {% for perso in persos %}
-          <div class="container">
-            <img src="{{ perso.img }}" title="{{ perso.title }}" class="img-fluid" alt="{{ perso.title }}">
-            <div class="intro-text">
-              <a class="articleTitle" href="{{ path('perso', { 'id': perso.id }) }}"><span class="name">{{ perso.title }} {{ perso.prenom }}</span></a>
-              <hr class="star-light">
-              <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
+          <div id="etoiles"></div>
+          <div class="container ">
+            <div class="profilImg">
+              <img src="{{ perso.img }}" title="{{ perso.title }}" class="elegantshadow img-fluid" alt="{{ perso.title }}">
+
             </div>
-            <p>{{ perso.adresse }}</p>
-            <p>{{ perso.tel }}</p>
-          </article>
+            <div class="intro-text">
+              <span class="name">{{ perso.prenom }} {{ perso.title }}</span>
+              <hr class="star-light">
+              <span class="skills">{{ perso.poste }}</span>
+              <!-- <p class=""><em>{{ perso.adresse }}</em></p>
+              <p class=""><em> {{ perso.tel }}</em></p> -->
+              <ul class="list-inline socialBtn">
+                <li><a href="{{ perso.facebook }}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="{{ perso.github }}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                <li><a href="{{ perso.codepen }}" target="_blank"><i class="fa fa-codepen" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
         {% endfor %}
-        <div class="container">
-          <img class="img-fluid" src="" alt="">
-          <div class="intro-text">
-            <span class="name">Start Bootstrap</span>
-            <hr class="star-light">
-            <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
-          </div>
-        </div>
       </header>
-<div id="front">
+
+<div id="front" class="container">
   <h1 class="row col-md-12">Articles</h1>
     {% for article in articles %}
       <article class="row col-md-6 tuile">
