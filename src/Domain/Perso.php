@@ -31,6 +31,9 @@ class Perso
     // Prenom
     private $prenom;
 
+    // Prenom
+    private $img;
+
     // Telephone
     private $tel;
 
@@ -40,6 +43,13 @@ class Perso
     }
     public function getTel(){
       return $this->tel;
+    }
+    public function setImg( $img ){
+      $this->img = $img;
+      return $this;
+    }
+    public function getImg(){
+      return $this->img;
     }
     public function getAdresse(){
       return $this->adresse;
