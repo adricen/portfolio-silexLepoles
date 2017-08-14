@@ -102,6 +102,21 @@ $app->match('/admin/loisir/{id}/edit', "MicroCMS\Controller\AdminController::edi
 // Remove an loisir
 $app->get('/admin/loisir/{id}/delete', "MicroCMS\Controller\AdminController::deleteLoisirAction")
 ->bind('admin_loisir_delete');
+// API : get all experiences
+$app->get('/api/loisir', "MicroCMS\Controller\ApiController::getloisirsAction")
+->bind('api_loisirs');
+
+// API : get an loisir
+$app->get('/api/loisir/{id}', "MicroCMS\Controller\ApiController::getloisirAction")
+->bind('api_loisir');
+
+// API : create an loisir
+$app->post('/api/loisir', "MicroCMS\Controller\ApiController::addloisirAction")
+->bind('api_loisir_add');
+
+// API : remove an loisir
+$app->delete('/api/loisir/{id}', "MicroCMS\Controller\ApiController::deleteloisirAction")
+->bind('api_loisir_delete');
 
 // ======================================
 // CONCERNE PERSO

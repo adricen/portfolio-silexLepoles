@@ -11,6 +11,7 @@ use MicroCMS\Domain\Perso;
 use MicroCMS\Domain\Portfolio;
 use MicroCMS\Domain\Loisir;
 use MicroCMS\Form\Type\ArticleType;
+use MicroCMS\Form\Type\LoisirType;
 use MicroCMS\Form\Type\ExperienceType;
 use MicroCMS\Form\Type\CommentType;
 use MicroCMS\Form\Type\UserType;
@@ -61,6 +62,57 @@ class AdminController {
             'title' => 'New article',
             'articleForm' => $articleForm->createView()));
     }
+    /**
+     * Add loisir controller.
+     *
+     * @param Request $request Incoming request
+     * @param Application $app Silex application
+     */
+    public function addLoisirAction(Request $request, Application $app) {
+        $loisir = new Loisir();
+        $loisirForm = $app['form.factory']->create(LoisirType::class, $loisir);
+        $loisirForm->handleRequest($request);
+        if ($loisirForm->isSubmitted() && $loisirForm->isValid()) {
+            $app['dao.loisir']->save($loisir);
+            $app['session']->getFlashBag()->add('success', 'The article was successfully created.');
+        }
+        return $app['twig']->render('article_form.html.twig', array(
+            'title' => 'New article',
+            'articleForm' => $loisirForm->createView()));
+    }
+    /**
+    * Edit article controller.
+    *
+    * @param integer $id Article id
+    * @param Request $request Incoming request
+    * @param Application $app Silex application
+    */
+    public function editLoisirAction($id, Request $request, Application $app) {
+      $loisir = $app['dao.loisir']->find($id);
+      $loisirForm = $app['form.factory']->create(LoisirType::class, $loisir);
+      $loisirForm->handleRequest($request);
+      if ( $loisirForm->isSubmitted() && $loisirForm->isValid() ) {
+        $app['dao.loisir']->save($loisir);
+        $app['session']->getFlashBag()->add('success', 'Votre loisir à été enregistré avec succé.');
+      }
+      return $app['twig']->render('loisir_form.html.twig', array(
+        'title' => 'Editer votre loisir',
+        'loisirForm' => $loisirForm->createView()));
+      }
+
+      /**
+      * Delete article controller.
+      *
+      * @param integer $id Article id
+      * @param Application $app Silex application
+      */
+      public function deleteLoisirAction($id, Application $app) {
+          // Delete the article
+          $app['dao.loisir']->delete($id);
+          $app['session']->getFlashBag()->add('success', 'Ce loisir à été supprimé avec succé !');
+          // Redirect to admin home page
+          return $app->redirect($app['url_generator']->generate('admin'));
+      }
 
     /**
      * Edit article controller.
