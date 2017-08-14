@@ -80,6 +80,7 @@
                       <tr>
                           <th>ID</th>
                           <th>Contrat</th>
+                          <th>Nom</th>
                           <th>Dates</th>
                           <th>Poste</th>
                           <th>Descriptif</th>
@@ -90,6 +91,7 @@
                   {% for experience in experiences %}
                   <tr>
                       <td>{{ experience.id }}</td>
+                      <td>{{ experience.contrat }}</td>
                       <td><a class="articleTitle" href="{{ path('experience', { 'id': experience.id }) }}">{{ experience.poste }}</a></td>
                       <td><div class="">
                         {{experience.debut}} - {{experience.fin}}

@@ -84,7 +84,7 @@ class ExperienceDAO extends DAO
     protected function buildDomainObject(array $row) {
         $experience = new Experience();
         $experience->setId($row['xp_id']);
-        // $experience->setContrat($row['xp_poste'])
+        $experience->setContrat($row['xp_contrat']);
         $experience->setDebut($row['xp_debut']);
         $experience->setFin($row['xp_fin']);
         $experience->setImg($row['xp_img']);
