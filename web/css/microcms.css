@@ -9,6 +9,24 @@ img {
 /*------*/
 
 /* Classes */
+/* -- Header */
+.socialBtn li{
+  font-size: 3em;
+  display: inline-block;
+  margin: 10px;
+}
+.socialBtn li a i{
+  transition-duration: 1s;
+  padding-bottom:5px;
+  border-bottom:5px solid rgba(255, 255, 255, 0)
+}
+.socialBtn li a i:hover{
+  border-bottom:5px solid rgba(255, 255, 255, 1);
+}
+.socialBtn a{
+  color:white;
+}
+
 .adminTable {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -31,8 +49,39 @@ img {
     padding-top: 10px;
     text-align: center;
 }
+.table-responsive{
+  margin-bottom:10px;
+}
 /*------*/
+.profilImg{
+  width: 250px;
+  margin: auto;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+  }
+  .profilImg img{
+    position:absolute;
+    width:100%;
+    /* bottom: -50px; */
+  }
+  header.masthead .intro-text .skills{
+    font-size: 1.5em;
+    text-transform: uppercase;
+  }
+  @media (min-width: 768px){
+    header.masthead .intro-text .skills {
+      font-size: 2.75em;
+      text-transform: uppercase;
+    }
+  }
+  @media (min-width: 768px){
+    header.masthead .intro-text .name {
+      font-size: 3.75em;
+    }
 
+  }
 /* ID */
 #admin{
 

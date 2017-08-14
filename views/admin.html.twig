@@ -188,6 +188,10 @@
                   <th>Id</th>
                   <th>Nom</th>
                   <th>Prenom</th>
+                  <th>Image</th>
+                  <th><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</th>
+                  <th><i class="fa fa-github" aria-hidden="true"></i> github</th>
+                  <th><i class="fa fa-codepen" aria-hidden="true"></i> codepen</th>
                   <th>Telephone</th>
                   <th>Adresse</th>
                   <th></th>  <!-- Actions column -->
@@ -198,6 +202,13 @@
                   <td><strong>{{ perso.id }}</strong></td>
                   <td><a class="articleTitle" href="{{ path('article', { 'id': perso.id }) }}">{{ perso.title }}</a></td>
                   <td><a class="articleTitle" href="{{ path('article', { 'id': perso.id }) }}">{{ perso.prenom }}</a></td>
+                  <td>
+                    <div class="img-thumbnail">
+                      <img src="{{ perso.img }}" alt=""></td>
+                    </div>
+                  <td>{{ perso.facebook }}</td>
+                  <td>{{ perso.github }}</td>
+                  <td>{{ perso.codepen }}</td>
                   <td>{{ perso.tel }}</td>
                   <td>{{ perso.adresse | truncate(60) }}</td>
                   <td>
