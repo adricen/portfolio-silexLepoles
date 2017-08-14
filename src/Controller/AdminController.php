@@ -13,6 +13,8 @@ use MicroCMS\Domain\Loisir;
 use MicroCMS\Form\Type\ArticleType;
 use MicroCMS\Form\Type\LoisirType;
 use MicroCMS\Form\Type\ExperienceType;
+use MicroCMS\Form\Type\PersoType;
+use MicroCMS\Form\Type\PortfolioType;
 use MicroCMS\Form\Type\CommentType;
 use MicroCMS\Form\Type\UserType;
 use MicroCMS\Form\Type\ExperienceController;
@@ -77,7 +79,7 @@ class AdminController {
             $app['session']->getFlashBag()->add('success', 'The article was successfully created.');
         }
         return $app['twig']->render('article_form.html.twig', array(
-            'title' => 'New article',
+            'title' => 'Nouveau Loisir',
             'articleForm' => $loisirForm->createView()));
     }
     /**
@@ -106,7 +108,7 @@ class AdminController {
       * @param integer $id Article id
       * @param Application $app Silex application
       */
-      public function deleteLoisirAction($id, Application $app) {
+      public function deleteLoisirAction( $id, Application $app ) {
           // Delete the article
           $app['dao.loisir']->delete($id);
           $app['session']->getFlashBag()->add('success', 'Ce loisir à été supprimé avec succé !');
@@ -149,7 +151,56 @@ class AdminController {
         // Redirect to admin home page
         return $app->redirect($app['url_generator']->generate('admin'));
     }
-
+    /**
+     * Add perso controller.
+     *
+     * @param Request $request Incoming request
+     * @param Application $app Silex application
+     */
+    public function addPersoAction(Request $request, Application $app) {
+        $perso = new Perso();
+        $persoForm = $app['form.factory']->create(PersoType::class, $perso);
+        $persoForm->handleRequest($request);
+        if ($persoForm->isSubmitted() && $persoForm->isValid()) {
+            $app['dao.perso']->save($perso);
+            $app['session']->getFlashBag()->add('success', 'The article was successfully created.');
+        }
+        return $app['twig']->render('perso_form.html.twig', array(
+            'title' => 'Nouvelles informations personnels',
+            'persoForm' => $persoForm->createView()));
+    }
+    /**
+     * Edit article controller.
+     *
+     * @param integer $id Article id
+     * @param Request $request Incoming request
+     * @param Application $app Silex application
+     */
+    public function editPersoAction($id, Request $request, Application $app) {
+        $perso = $app['dao.perso']->find($id);
+        $persoForm = $app['form.factory']->create(PersoType::class, $perso);
+        $persoForm->handleRequest($request);
+        if ($persoForm->isSubmitted() && $persoForm->isValid()) {
+            $app['dao.perso']->save($perso);
+            $app['session']->getFlashBag()->add('success', 'The personnels was successfully updated.');
+        }
+        return $app['twig']->render('perso_form.html.twig', array(
+            'title' => 'Editer ces informations personnels',
+            'persoForm' => $persoForm->createView() ));
+    }
+    /**
+     * Delete article controller.
+     *
+     * @param integer $id Article id
+     * @param Application $app Silex application
+     */
+    public function deletePersoAction($id, Application $app) {
+        // Delete the article
+        $app['dao.perso']->delete($id);
+        $app['session']->getFlashBag()->add('success', 'Ces information personnels ont été supprimé.');
+        // Redirect to admin home page
+        return $app->redirect($app['url_generator']->generate('admin'));
+    }
     /**
      * Edit comment controller.
      *
@@ -169,7 +220,50 @@ class AdminController {
             'title' => 'Edit comment',
             'commentForm' => $commentForm->createView()));
     }
-
+    public function addPortfolioAction(Request $request, Application $app) {
+        $portfolio = new Portfolio();
+        $portfolioForm = $app['form.factory']->create(PortfolioType::class, $portfolio);
+        $portfolioForm->handleRequest($request);
+        if ($portfolioForm->isSubmitted() && $portfolioForm->isValid()) {
+            $app['dao.portfolio']->save($portfolio);
+            $app['session']->getFlashBag()->add('success', 'The article was successfully created.');
+        }
+        return $app['twig']->render('portfolio_form.html.twig', array(
+            'title' => 'Nouvelles informations portfolionnels',
+            'portfolioForm' => $portfolioForm->createView()));
+    }
+    /**
+     * Edit article controller.
+     *
+     * @param integer $id Article id
+     * @param Request $request Incoming request
+     * @param Application $app Silex application
+     */
+    public function editPortfolioAction($id, Request $request, Application $app) {
+        $portfolio = $app['dao.portfolio']->find($id);
+        $portfolioForm = $app['form.factory']->create(PortfolioType::class, $portfolio);
+        $portfolioForm->handleRequest($request);
+        if ($portfolioForm->isSubmitted() && $portfolioForm->isValid()) {
+            $app['dao.portfolio']->save($portfolio);
+            $app['session']->getFlashBag()->add('success', 'Vous avez édité cette element avec succés.');
+        }
+        return $app['twig']->render('portfolio_form.html.twig', array(
+            'title' => 'Editer ces informations portfolionnels',
+            'portfolioForm' => $portfolioForm->createView() ));
+    }
+    /**
+     * Delete article controller.
+     *
+     * @param integer $id Article id
+     * @param Application $app Silex application
+     */
+    public function deletePortfolioAction($id, Application $app) {
+        // Delete the article
+        $app['dao.portfolio']->delete($id);
+        $app['session']->getFlashBag()->add('success', 'Ces information personnels ont été supprimé.');
+        // Redirect to admin home page
+        return $app->redirect($app['url_generator']->generate('admin'));
+    }
     /**
      * Delete comment controller.
      *

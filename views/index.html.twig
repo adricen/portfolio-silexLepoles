@@ -13,11 +13,11 @@
           <div id="etoiles"></div>
           <div class="container ">
             <div class="profilImg">
-              <img src="{{ perso.img }}" title="{{ perso.title }}" class="elegantshadow img-fluid" alt="{{ perso.title }}">
+              <img src="{{ perso.img }}" title="{{ perso.nom }}" class="elegantshadow img-fluid" alt="{{ perso.nom }}">
 
             </div>
             <div class="intro-text">
-              <span class="name"><i class="fa fa-rebel" aria-hidden="true"></i> {{ perso.prenom }} {{ perso.title }} <i class="fa fa-rebel" aria-hidden="true"></i></span>
+              <span class="name"><i class="fa fa-rebel" aria-hidden="true"></i> {{ perso.prenom }} {{ perso.nom }} <i class="fa fa-rebel" aria-hidden="true"></i></span>
               <hr class="star-light">
               <span class="skills">{{ perso.poste }}</span>
               <!-- <p class=""><em>{{ perso.adresse }}</em></p>
@@ -60,9 +60,9 @@
   <h1 class="row col-md-12">Perso</h1>
   {% for perso in persos %}
     <article class="row col-md-6 tuile">
-        <h2><a class="articleTitle" href="{{ path('perso', { 'id': perso.id }) }}">{{ perso.title }} {{ perso.prenom }}</a></h2>
+        <h2><a class="articleTitle" href="{{ path('perso', { 'id': perso.id }) }}">{{ perso.nom }} {{ perso.prenom }}</a></h2>
         <div class="col-md-12">
-          <img src="{{ perso.img }}" title="{{ perso.title }}" class="col-md-8 col-md-offset-2 img-thumbnail" alt="{{ perso.title }}">
+          <img src="{{ perso.img }}" title="{{ perso.nom }}" class="col-md-8 col-md-offset-2 img-thumbnail" alt="{{ perso.nom }}">
         </div>
         <p>{{ perso.adresse }}</p>
         <p>{{ perso.tel }}</p>
@@ -71,8 +71,11 @@
   <h1 class="row col-md-12">Portfolio</h1>
   {% for portfolio in portfolios %}
     <article class="row col-md-6 tuile">
-        <h2><a class="articleTitle" href="{{ path('portfolio', { 'id': portfolio.id }) }}">{{ portfolio.title }}</a></h2>
-        <p>{{ portfolio.content }}</p>
+        <h2><a class="articleTitle" href="{{ path('portfolio', { 'id': portfolio.id }) }}">{{ portfolio.name }}</a></h2>
+        <div class="col-md-12">
+          <p>{{ portfolio.descriptif }}</p>
+          <img src="{{ portfolio.img }}" title="{{ portfolio.name }}" class="col-md-8 col-md-offset-2 img-thumbnail" alt="{{ portfolio.name }}">
+        </div>
     </article>
   {% endfor %}
 </div>

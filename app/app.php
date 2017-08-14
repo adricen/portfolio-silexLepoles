@@ -79,7 +79,7 @@ $app['dao.perso'] = function ($app) {
     return new MicroCMS\DAO\PersoDAO( $app['db'] );
 };
 $app['dao.portfolio'] = function ($app) {
-    return new MicroCMS\DAO\PersoDAO( $app['db'] );
+    return new MicroCMS\DAO\PortfolioDAO( $app['db'] );
 };
 
 // Register error handler

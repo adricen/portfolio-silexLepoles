@@ -32,7 +32,7 @@ class LoisirDAO extends DAO
      * @return \MicroCMS\Domain\Article|throws an exception if no matching article is found
      */
     public function find($id) {
-        $sql = "select * from t_loisir where loisir_id=?";
+        $sql = "select * from t_loisirs where loisir_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
@@ -45,22 +45,31 @@ class LoisirDAO extends DAO
      *
      * @param \MicroCMS\Domain\Article $article The article to save
      */
-    public function save(Loisir $loisir) {
+    public function save( Loisir $loisir ) {
         $loisirData = array(
-            'loisir_title' => $loisir->getTitle(),
-            'loisir_content' => $loisir->getContent(),
+            'loisir_nom' => $loisir->getTitle(),
+            'loisir_descriptif' => $loisir->getContent(),
             );
 
         if ($loisir->getId()) {
             // The article has already been saved : update it
-            $this->getDb()->update('t_article', $loisirData, array('art_id' => $loisir->getId()));
+            $this->getDb()->update('t_loisirs', $loisirData, array( 'loisir_id' => $loisir->getId() ));
         } else {
             // The article has never been saved : insert it
-            $this->getDb()->insert('t_article', $loisirData);
+            $this->getDb()->insert('t_loisirs', $loisirData);
             // Get the id of the newly created article and set it on the entity.
             $id = $this->getDb()->lastInsertId();
             $loisir->setId($id);
         }
+    }
+    /**
+     * Removes an article from the database.
+     *
+     * @param integer $id The article id.
+     */
+    public function delete($id) {
+        // Delete the article
+        $this->getDb()->delete('t_loisirs', array('loisir_id' => $id));
     }
     /**
      * Creates an Experience object based on a DB row.

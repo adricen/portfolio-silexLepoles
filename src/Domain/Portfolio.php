@@ -16,14 +16,32 @@ class Portfolio
      *
      * @var string
      */
-    private $title;
-
+    private $name;
     /**
-     * Experience content.
+     * Experience title.
      *
      * @var string
      */
-    private $content;
+    private $lieu;
+
+    /**
+     * Experience descriptif.
+     *
+     * @var string
+     */
+    private $descriptif;
+    /**
+     * Experience date.
+     *
+     * @var string
+     */
+    private $date;
+    /**
+     * Experience date.
+     *
+     * @var string
+     */
+    private $img;
 
     public function getId() {
         return $this->id;
@@ -34,21 +52,46 @@ class Portfolio
         return $this;
     }
 
-    public function getTitle() {
-        return $this->title;
+    public function getName() {
+        return $this->name;
     }
 
-    public function setTitle($title) {
-        $this->title = $title;
+    public function setName($name) {
+        $this->name = $name;
         return $this;
     }
 
-    public function getContent() {
-        return $this->content;
+    public function getLieu() {
+        return $this->lieu;
     }
 
-    public function setContent($content) {
-        $this->content = $content;
+    public function setLieu($lieu) {
+        $this->lieu = $lieu;
+        return $this;
+    }
+
+    public function getDescriptif() {
+        return $this->descriptif;
+    }
+
+    public function setDescriptif($descriptif) {
+        $this->descriptif = $descriptif;
+        return $this;
+    }
+    public function getDate() {
+        return $this->date;
+    }
+
+    public function setDate($date) {
+        $this->date = $date;
+        return $this;
+    }
+    public function getImg() {
+        return $this->img;
+    }
+
+    public function setImg($img) {
+        $this->img = $img;
         return $this;
     }
 }

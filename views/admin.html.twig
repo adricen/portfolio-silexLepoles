@@ -90,7 +90,7 @@
                   {% for experience in experiences %}
                   <tr>
                       <td>{{ experience.id }}</td>
-                      <td><a class="articleTitle" href="{{ path('article', { 'id': experience.id }) }}">{{ experience.poste }}</a></td>
+                      <td><a class="articleTitle" href="{{ path('experience', { 'id': experience.id }) }}">{{ experience.poste }}</a></td>
                       <td><div class="">
                         {{experience.debut}} - {{experience.fin}}
                       </div>
@@ -104,9 +104,9 @@
                       </td>
                       <td>
                           <a href="{{ path('admin_experience_edit', { 'id': experience.id }) }}" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-                          <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#articleDialog{{ experience.id }}"><span class="glyphicon glyphicon-remove"></span>
+                          <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#experienceDialog{{ experience.id }}"><span class="glyphicon glyphicon-remove"></span>
                           </button>
-                          <div class="modal fade" id="articleDialog{{ experience.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal fade" id="experienceDialog{{ experience.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
                                   <div class="modal-content">
                                       <div class="modal-header">
@@ -139,20 +139,31 @@
             <table class="table table-hover table-condensed">
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Content</th>
+                  <th>Id</th>
+                  <th>Nom</th>
+                  <th>Lieux</th>
+                  <th>Date</th>
+                  <th>Descriptif</th>
+                  <th>Image</th>
                   <th></th>  <!-- Actions column -->
                 </tr>
               </thead>
               {% for portfolio in portfolios %}
                 <tr>
-                  <td><a class="articleTitle" href="{{ path('article', { 'id': portfolio.id }) }}">{{ portfolio.title }}</a></td>
-                  <td>{{ portfolio.content | truncate(60) }}</td>
+                  <td>{{ portfolio.id }}</td>
+                  <td><a class="articleTitle" href="{{ path('article', { 'id': portfolio.id }) }}">{{ portfolio.name }}</a></td>
+                  <td>{{ portfolio.lieu }}</td>
+                  <td>{{ portfolio.date }}</td>
+                  <td>{{ portfolio.descriptif | truncate(60) }}</td>
+                  <td>
+                    <div class="img-thumbnail">
+                      <img src="{{ portfolio.img }}" alt="{{ portfolio.name }}"> </td>
+                    </div>
                   <td>
                     <a href="{{ path('admin_portfolio_edit', { 'id': portfolio.id }) }}" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-                    <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#articleDialog{{ portfolio.id }}"><span class="glyphicon glyphicon-remove"></span>
+                    <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#portfolioDialog{{ portfolio.id }}"><span class="glyphicon glyphicon-remove"></span>
                     </button>
-                    <div class="modal fade" id="articleDialog{{ portfolio.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="portfolioDialog{{ portfolio.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -200,11 +211,11 @@
               {% for perso in persos %}
                 <tr>
                   <td><strong>{{ perso.id }}</strong></td>
-                  <td><a class="articleTitle" href="{{ path('article', { 'id': perso.id }) }}">{{ perso.title }}</a></td>
+                  <td><a class="articleTitle" href="{{ path('article', { 'id': perso.id }) }}">{{ perso.nom }}</a></td>
                   <td><a class="articleTitle" href="{{ path('article', { 'id': perso.id }) }}">{{ perso.prenom }}</a></td>
                   <td>
                     <div class="img-thumbnail">
-                      <img src="{{ perso.img }}" alt=""></td>
+                      <img src="{{ perso.img }}" alt="{{ perso.nom }} {{ perso.prenom }}"></td>
                     </div>
                   <td>{{ perso.facebook }}</td>
                   <td>{{ perso.github }}</td>
@@ -213,9 +224,9 @@
                   <td>{{ perso.adresse | truncate(60) }}</td>
                   <td>
                     <a href="{{ path('admin_perso_edit', { 'id': perso.id }) }}" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-                    <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#articleDialog{{ perso.id }}"><span class="glyphicon glyphicon-remove"></span>
+                    <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#persoDialog{{ perso.id }}"><span class="glyphicon glyphicon-remove"></span>
                     </button>
-                    <div class="modal fade" id="articleDialog{{ perso.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="persoDialog{{ perso.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -248,6 +259,7 @@
             <table class="table table-hover table-condensed">
               <thead>
                 <tr>
+                  <th>Id</th>
                   <th>Title</th>
                   <th>Content</th>
                   <th></th>  <!-- Actions column -->
@@ -255,13 +267,14 @@
               </thead>
               {% for loisir in loisirs %}
                 <tr>
+                  <td>{{ loisir.id }}</td>
                   <td><a class="articleTitle" href="{{ path('loisir', { 'id': loisir.id }) }}">{{ loisir.title }}</a></td>
                   <td>{{ loisir.content | truncate(60) }}</td>
                   <td>
                     <a href="{{ path('admin_loisir_edit', { 'id': loisir.id }) }}" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-                    <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#articleDialog{{ loisir.id }}"><span class="glyphicon glyphicon-remove"></span>
+                    <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#loisirDialog{{ loisir.id }}"><span class="glyphicon glyphicon-remove"></span>
                     </button>
-                    <div class="modal fade" id="articleDialog{{ loisir.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="loisirDialog{{ loisir.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">

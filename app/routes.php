@@ -103,19 +103,19 @@ $app->match('/admin/loisir/{id}/edit', "MicroCMS\Controller\AdminController::edi
 $app->get('/admin/loisir/{id}/delete', "MicroCMS\Controller\AdminController::deleteLoisirAction")
 ->bind('admin_loisir_delete');
 // API : get all experiences
-$app->get('/api/loisir', "MicroCMS\Controller\ApiController::getloisirsAction")
+$app->get('/api/loisir', "MicroCMS\Controller\ApiController::getLoisirsAction")
 ->bind('api_loisirs');
 
 // API : get an loisir
-$app->get('/api/loisir/{id}', "MicroCMS\Controller\ApiController::getloisirAction")
+$app->get('/api/loisir/{id}', "MicroCMS\Controller\ApiController::getLoisirAction")
 ->bind('api_loisir');
 
 // API : create an loisir
-$app->post('/api/loisir', "MicroCMS\Controller\ApiController::addloisirAction")
+$app->post('/api/loisir', "MicroCMS\Controller\ApiController::addLoisirAction")
 ->bind('api_loisir_add');
 
 // API : remove an loisir
-$app->delete('/api/loisir/{id}', "MicroCMS\Controller\ApiController::deleteloisirAction")
+$app->delete('/api/loisir/{id}', "MicroCMS\Controller\ApiController::deleteLoisirAction")
 ->bind('api_loisir_delete');
 
 // ======================================
@@ -139,6 +139,22 @@ $app->match('/admin/perso/{id}/edit', "MicroCMS\Controller\AdminController::edit
 // Remove an perso
 $app->get('/admin/perso/{id}/delete', "MicroCMS\Controller\AdminController::deletePersoAction")
 ->bind('admin_perso_delete');
+
+// API : get all experiences
+$app->get('/api/perso', "MicroCMS\Controller\ApiController::getPersosAction")
+->bind('api_perso');
+
+// API : get an perso
+$app->get('/api/perso/{id}', "MicroCMS\Controller\ApiController::getPersoAction")
+->bind('api_perso');
+
+// API : create an perso
+$app->post('/api/perso', "MicroCMS\Controller\ApiController::addPersoAction")
+->bind('api_perso_add');
+
+// API : remove an perso
+$app->delete('/api/perso/{id}', "MicroCMS\Controller\ApiController::deletePersoAction")
+->bind('api_perso_delete');
 
 // ======================================
 // CONCERNE PORTFOLIO

@@ -11,22 +11,12 @@ class Perso
      */
     private $id;
 
-    /**
-     * Experience title.
-     *
-     * @var string
-     */
-    private $title;
-
-    /**
-     * Experience content.
-     *
-     * @var string
-     */
-    private $content;
-
     // Adresse
     private $adresse;
+    // Adresse
+    private $nom;
+    // Adresse
+    private $content;
 
     // Adresse
     private $poste;
@@ -115,12 +105,12 @@ class Perso
         return $this;
     }
 
-    public function getTitle() {
-        return $this->title;
+    public function getNom() {
+        return $this->nom;
     }
 
-    public function setTitle($title) {
-        $this->title = $title;
+    public function setNom($nom) {
+        $this->nom = $nom;
         return $this;
     }
 
