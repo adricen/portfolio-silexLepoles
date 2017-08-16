@@ -4,34 +4,6 @@
 
 {% block content %}
 
-<body class="index" id="page-top">
-  <!-- Navigation -->
-
-      <!-- Header -->
-      <header class="masthead gradient">
-        {% for perso in persos %}
-          <div id="etoiles"></div>
-          <div class="container ">
-            <div class="profilImg">
-              <img src="{{ perso.img }}" title="{{ perso.nom }}" class="elegantshadow img-fluid" alt="{{ perso.nom }}">
-
-            </div>
-            <div class="intro-text">
-              <span class="name"><i class="fa fa-rebel" aria-hidden="true"></i> {{ perso.prenom }} {{ perso.nom }} <i class="fa fa-rebel" aria-hidden="true"></i></span>
-              <hr class="star-light">
-              <span class="skills">{{ perso.poste }}</span>
-              <!-- <p class=""><em>{{ perso.adresse }}</em></p>
-              <p class=""><em> {{ perso.tel }}</em></p> -->
-              <ul class="list-inline socialBtn">
-                <li><a href="{{ perso.facebook }}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="{{ perso.github }}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-                <li><a href="{{ perso.codepen }}" target="_blank"><i class="fa fa-codepen" aria-hidden="true"></i></a></li>
-              </ul>
-            </div>
-        {% endfor %}
-      </header>
-
-<div id="front" class="container">
   <h1 class="row col-md-12">Articles</h1>
     {% for article in articles %}
       <article class="row col-md-6 tuile">
@@ -78,6 +50,4 @@
         </div>
     </article>
   {% endfor %}
-</div>
-</body>
 {% endblock %}
